@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			//  1. WeakSet 结构与 Set 类似，也是不重复的值的集合。但是，它与 Set 有两个区别。
+			//	区别一，WeakSet 的成员只能是对象，而不能是其他类型的值。
+			const ws = new WeakSet()
+			console.log(ws.add(1)) //Invalid value used in weak set
+			console.log(ws.add(Symbol())) //Invalid value used in weak set
+			// 	区别二，WeakSet 中的对象都是弱引用.即垃圾回收机制不考虑 WeakSet 对该对象的引用
+			//  也就是说，如果其他对象都不再引用该对象，那么垃圾回收机制会自动回收该对象所占用的内存，不考虑该对象还存在于 WeakSet 之中。
+			
+			// 2. 作为构造函数，WeakSet 可以接受一个数组或类似数组的对象作为参数
+			const a = [[1,2],[3,4]]
+			const ws = new WeakSet(a)
+			console.log(ws) //WeakSet [1,2][3,4] 
+			// 是a数组的成员成为 WeakSet 的成员，而不是a数组本身。
+			
+			const b = [5,6]
+			let ws = new WeakSet(b)
+			console.log(ws) // Invalid value used in weak set
+			
+		   
+		    //3.WeakSet结构的三个方法
+		    //3.1 add() 向WeakSet中添加对象
+			const ws = new WeakSet()
+			const foo = {}
+			const bar = {}
+			ws.add(window)
+			ws.add(foo)
+			//3.2 判断这个值是否存在 返回布尔值
+			console.log(ws.has(foo)) //true
+			console.log(ws.has(bar)) //false 
+			//3.3 delete() 删除WeakSet中的对象
+			ws.delete(foo)
+			console.log(ws.has(foo)) //false
+			
+			// 4. WeakSet没有size属性,无法遍历其成员
+			console.log(ws.size) //undefined
+			ws.forEach((item) => {
+			  console.log("WeakSet has:" + item) //ws.forEach is not a function
+		    })
+		</script>
+		
+	</body>
+</html>
