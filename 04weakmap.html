@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		/*
+			1.weakmap与map的区别有；两点
+				1.1 weakmap只接受对象作为键名，不接受其他类型。而map是各种类型的值都可以作为键名
+				1.2 weakmap只接受对象作为键名（null除外），且不计入垃圾回收机制
+				weakmap 它的键名所引用的对象都是弱引用，即垃圾回收机制不将该引用考虑在内。
+				因此，只要所引用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存。
+				也就是说，一旦不再需要，WeakMap 里面的键名对象和所对应的键值对会自动消失，不用手动删除引用。
+				weakmap结构有助于防止内存泄漏
+		*/
+	   /*
+		const wmap = new WeakMap()
+		const key = {
+			foo:1
+		}
+		wmap.set(key,2)
+		console.log(wmap.get(key)) //2
+		*/
+		
+		
+	</script>
+</html>
